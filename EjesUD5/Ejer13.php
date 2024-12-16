@@ -8,17 +8,17 @@
 ?>
 
 <!DOCtype html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulario 1</title>
+    <title>Ejer 13</title>
 </head>
 <body>
 
 <h1>Izan Garrido - Formulario de registro</h1>
 
-<form action="/formulario13.php" method="get" enctype="multipart/form-data">
+<form action="/IzanForm1OK.php" method="get">
 
     <!-- El nombre, con un control de tipo texto. Tamaño máximo 50 caracteres -->
     <label for="nombre" >Nombre: </label>
