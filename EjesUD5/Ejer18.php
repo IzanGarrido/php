@@ -41,7 +41,7 @@
 </html>
 
 <?php
-
+// Funcion par comprobar sin el texto introducido son numeros
 function SonNums() {
     $numeros = $_POST['numeros'];
     $numeros = explode(',', $numeros);

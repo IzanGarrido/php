@@ -36,10 +36,10 @@
 function quinzena($num) {
     if ($num <= 15) {
         // Si el número es 15 o menor, muestra "Primera quincena"
-        echo "Primera quincena<br>";
+        return "Primera quincena<br>";
     } else {
         // Si el número es mayor a 15, muestra "Segunda quincena"
-        echo "Segunda quincena<br>";
+        return "Segunda quincena<br>";
     }
 }
 

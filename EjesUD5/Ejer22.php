@@ -14,10 +14,15 @@
 if (isset($_POST['enviar'])) {
 
     $email = $_POST['email'];
-    $aceptar = $_POST['aceptar'];
-
-    if ($aceptar) {
-        
+    $aceptar = "";
+    if (isset($_POST['aceptar'])) {
+        $aceptar = $_POST['aceptar'];
+    }
+   
+    if ($aceptar == "on") {
+        $aceptar = "Si acepto la publicidad";
+    } else {
+        $aceptar = "No acepto la publicidad";
     }
 
    header("Location: Ejer22-enviar.php?email=$email&aceptar=$aceptar");

@@ -3,6 +3,6 @@
 $email = $_GET['email'];
 $aceptar = $_GET['aceptar'];
 
-echo $email." ".$aceptar;
+echo "Email: ".$email."<br>".$aceptar;
 
 ?>
