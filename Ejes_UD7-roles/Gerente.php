@@ -7,6 +7,7 @@
 # y a criterio del usuario, el salario máximo, el salario mínimo y el salario medio. (puede elegir uno
 # de ellos, varios o todos)
 
+session_start();
 
 // Array asociativo de trabajadores con sus respectivos salarios
 $trabajadores = array(
@@ -35,14 +36,22 @@ function medio($arr) {
     echo "Salario medio: " . array_sum($arr)/count($arr) . "<br>";
 }
 
-// Comprueba si el formulario ha sido enviado
-if (isset($_POST["submit"])) {
-    $salario = $_POST["salario"]; // Recupera las opciones seleccionadas por el usuario
+if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
-    // Recorre cada selección y llama a la función correspondiente
-    foreach ($salario as $valor) {
-        $valor($trabajadores); // Llama a la función con el nombre almacenado en $valor
+    if (isset($_POST["submit"])) {
+        $salario = $_POST["salario"]; // Recupera las opciones seleccionadas por el usuario
+    
+        // Recorre cada selección y llama a la función correspondiente
+        foreach ($salario as $valor) {
+            $valor($trabajadores); // Llama a la función con el nombre almacenado en $valor
+        }
     }
+
+    if (isset($_POST["cerrarSesion"])) {
+        session_unset();
+        header("Location: Ejer1.php");
+    }
+    
 }
 
 ?>
@@ -52,21 +61,25 @@ if (isset($_POST["submit"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 10</title>
+    <title>Ejercicio 1 - Izan</title>
 </head>
 <body>
 
-<h1>Izan Garrido - Ejercicio 10</h1>
+<?php 
+    echo "<h1>" . $_SESSION['rol'] . " - " . $_SESSION['usuario'] . "</h1>"
+?>
+
 
 <!-- Formulario para seleccionar el cálculo deseado -->
-<form action="./Ejer10.php" method="post">
+<form action="Gerente.php" method="post">
     <label for="salario">Salario a calcular:</label>
     <select name="salario[]" id="salario" multiple>
         <option value="maximo">Salario Máximo</option>
         <option value="minimo">Salario Mínimo</option>
         <option value="medio">Salario Medio</option>
     </select><br><br>
-    <input type="submit" name="submit">
+    <input type="submit" name="submit" value="Calcular"><br><br>
+    <input type="submit" name="cerrarSesion" value="Cerrar Sesion" >
 </form>
     
 </body>
